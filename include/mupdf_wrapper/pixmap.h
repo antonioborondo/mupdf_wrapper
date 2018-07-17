@@ -3,6 +3,8 @@
 
 #include "mupdf_wrapper.h"
 
+#include <memory>
+
 #include <mupdf/fitz.h>
 
 namespace mupdf_wrapper
@@ -14,10 +16,10 @@ namespace mupdf_wrapper
     class MUPDF_WRAPPER_EXPORT Pixmap
     {
         fz_pixmap* m_mupdf_pixmap;
-        Context* m_context;
+        std::shared_ptr<Context> m_context;
 
     public:
-        Pixmap(Context* context, Document* document, Matrix* matrix, unsigned int page_number);
+        Pixmap(const std::shared_ptr<Context>& context, const std::shared_ptr<Document>& document, const std::shared_ptr<Matrix>& matrix, int page_number);
         ~Pixmap();
         fz_pixmap* get() const;
         unsigned char* get_samples() const;
