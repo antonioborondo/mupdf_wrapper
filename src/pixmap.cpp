@@ -8,7 +8,7 @@
 
 namespace mupdf_wrapper
 {
-    Pixmap::Pixmap(const std::shared_ptr<Context>& context, const std::shared_ptr<Document>& document, const std::shared_ptr<Matrix>& matrix, int page_number)
+    Pixmap::Pixmap(std::shared_ptr<Context> context, std::shared_ptr<Document> document, std::shared_ptr<Matrix> matrix, int page_number)
         : m_mupdf_pixmap(nullptr)
         , m_context(context)
     {

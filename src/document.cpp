@@ -6,7 +6,7 @@
 
 namespace mupdf_wrapper
 {
-    Document::Document(const std::shared_ptr<Context>& context, const std::string& filename)
+    Document::Document(std::shared_ptr<Context> context, const std::string& filename)
         : m_mupdf_document(nullptr)
         , m_context(context)
     {

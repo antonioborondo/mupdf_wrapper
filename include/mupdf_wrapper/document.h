@@ -18,7 +18,7 @@ namespace mupdf_wrapper
         std::shared_ptr<Context> m_context;
 
     public:
-        Document(const std::shared_ptr<Context>& context, const std::string& filename);
+        Document(std::shared_ptr<Context> context, const std::string& filename);
         ~Document();
         fz_document* get() const;
         int get_total_pages() const;
