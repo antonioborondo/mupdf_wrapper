@@ -5,7 +5,7 @@ namespace mupdf_wrapper
     Matrix::Matrix()
         : m_mupdf_matrix(nullptr)
     {
-        m_mupdf_matrix = new fz_matrix;
+        m_mupdf_matrix = new fz_matrix();
     }
 
     Matrix::~Matrix()
