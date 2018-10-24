@@ -44,7 +44,10 @@ target_link_libraries(mupdf_wrapper
 )
 
 set(TEST_FILES
+    test/context_test.cpp
+    test/document_test.cpp
     test/main.cpp
+    test/matrix_test.cpp
 )
 
 add_executable(mupdf_wrapper_test
@@ -54,4 +57,9 @@ add_executable(mupdf_wrapper_test
 target_include_directories(mupdf_wrapper_test
     PRIVATE
     ${CMAKE_SOURCE_DIR}/lib/catch2/single_include
+)
+
+target_link_libraries(mupdf_wrapper_test
+    PRIVATE
+    mupdf_wrapper
 )
