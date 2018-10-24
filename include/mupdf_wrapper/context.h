@@ -7,7 +7,7 @@
 
 namespace mupdf_wrapper
 {
-    class MUPDF_WRAPPER_EXPORT Context
+    class MUPDF_WRAPPER_API Context
     {
         fz_context* m_mupdf_context;
 

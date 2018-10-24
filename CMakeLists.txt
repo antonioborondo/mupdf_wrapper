@@ -1,7 +1,5 @@
 project(mupdf_wrapper)
 
-find_package(Qt5Core REQUIRED)
-
 set(HEADER_FILES
     include/mupdf_wrapper/context.h
     include/mupdf_wrapper/document.h
@@ -23,7 +21,6 @@ add_library(mupdf_wrapper SHARED
 )
 
 add_definitions(
-    -DQT_DEPRECATED_WARNINGS
     -DMUPDF_WRAPPER
 )
 
@@ -44,5 +41,4 @@ target_link_libraries(mupdf_wrapper
     debug ${CMAKE_SOURCE_DIR}/lib/mupdf/build/debug/libmupdfthird.a
     optimized ${CMAKE_SOURCE_DIR}/lib/mupdf/build/release/libmupdf.a
     optimized ${CMAKE_SOURCE_DIR}/lib/mupdf/build/release/libmupdfthird.a
-    Qt5::Core
 )

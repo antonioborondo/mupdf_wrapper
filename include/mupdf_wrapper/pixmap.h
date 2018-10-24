@@ -13,7 +13,7 @@ namespace mupdf_wrapper
     class Document;
     class Matrix;
 
-    class MUPDF_WRAPPER_EXPORT Pixmap
+    class MUPDF_WRAPPER_API Pixmap
     {
         fz_pixmap* m_mupdf_pixmap;
         std::shared_ptr<Context> m_context;

@@ -12,7 +12,7 @@ namespace mupdf_wrapper
 {
     class Context;
 
-    class MUPDF_WRAPPER_EXPORT Document
+    class MUPDF_WRAPPER_API Document
     {
         fz_document* m_mupdf_document;
         std::shared_ptr<Context> m_context;

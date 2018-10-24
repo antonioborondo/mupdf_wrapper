@@ -7,7 +7,7 @@
 
 namespace mupdf_wrapper
 {
-    class MUPDF_WRAPPER_EXPORT Matrix
+    class MUPDF_WRAPPER_API Matrix
     {
         fz_matrix* m_mupdf_matrix;
 
