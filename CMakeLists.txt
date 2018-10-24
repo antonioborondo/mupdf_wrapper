@@ -42,3 +42,16 @@ target_link_libraries(mupdf_wrapper
     optimized ${CMAKE_SOURCE_DIR}/lib/mupdf/build/release/libmupdf.a
     optimized ${CMAKE_SOURCE_DIR}/lib/mupdf/build/release/libmupdfthird.a
 )
+
+set(TEST_FILES
+    test/main.cpp
+)
+
+add_executable(mupdf_wrapper_test
+    ${TEST_FILES}
+)
+
+target_include_directories(mupdf_wrapper_test
+    PRIVATE
+    ${CMAKE_SOURCE_DIR}/lib/catch2/single_include
+)
