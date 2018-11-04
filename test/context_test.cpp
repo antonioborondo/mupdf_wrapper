@@ -4,7 +4,7 @@
 
 #include <memory>
 
-TEST_CASE("Create Context", "[context]")
+TEST_CASE("GIVEN no Context WHEN create new Context THEN Context is created", "[context]")
 {
     std::unique_ptr<mupdf_wrapper::Context> context;
 
@@ -14,7 +14,7 @@ TEST_CASE("Create Context", "[context]")
     REQUIRE(nullptr != mupdf_context);
 }
 
-TEST_CASE("Create Context and register document handlers", "[context]")
+TEST_CASE("GIVEN Context WHEN register document handlers THEN no exception is thrown", "[context]")
 {
     const mupdf_wrapper::Context context;
 

@@ -2,7 +2,7 @@
 
 #include <catch2/catch.hpp>
 
-TEST_CASE("Create Matrix", "[matrix]")
+TEST_CASE("GIVEN no Matrix WHEN create new Matrix THEN Matrix is created", "[matrix]")
 {
     const mupdf_wrapper::Matrix matrix;
 

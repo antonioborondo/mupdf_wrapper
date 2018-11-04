@@ -5,7 +5,7 @@
 
 #include <memory>
 
-TEST_CASE("GIVEN no document WHEN create new document THEN an exception is thrown", "[document]")
+TEST_CASE("GIVEN no document WHEN create new Document THEN an exception is thrown", "[document]")
 {
     const auto context = std::make_shared<mupdf_wrapper::Context>();
     context->register_document_handlers();
@@ -13,7 +13,7 @@ TEST_CASE("GIVEN no document WHEN create new document THEN an exception is throw
     REQUIRE_THROWS_AS(mupdf_wrapper::Document(context, ""), std::runtime_error);
 }
 
-TEST_CASE("GIVEN one page empty document WHEN create new document THEN document is created without throwing exception", "[document]")
+TEST_CASE("GIVEN one page empty document WHEN create new Document THEN Document is created without throwing exception", "[document]")
 {
     const auto context = std::make_shared<mupdf_wrapper::Context>();
     context->register_document_handlers();
@@ -25,7 +25,7 @@ TEST_CASE("GIVEN one page empty document WHEN create new document THEN document 
     REQUIRE(nullptr != mupdf_document);
 }
 
-TEST_CASE("GIVEN one page empty document WHEN create new document without register document handlers THEN an exception is thrown", "[document]")
+TEST_CASE("GIVEN one page empty document WHEN create new Document without register document handlers THEN an exception is thrown", "[document]")
 {
     const auto context = std::make_shared<mupdf_wrapper::Context>();
 
