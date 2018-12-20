@@ -5,11 +5,13 @@
 
 #include <mupdf/fitz.h>
 
+#include <memory>
+
 namespace mupdf_wrapper
 {
     class MUPDF_WRAPPER_API Context
     {
-        fz_context* m_mupdf_context;
+        std::unique_ptr<fz_context> m_mupdf_context;
 
     public:
         Context();
