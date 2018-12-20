@@ -3,9 +3,9 @@
 
 #include "mupdf_wrapper.h"
 
-#include <memory>
-
 #include <mupdf/fitz.h>
+
+#include <memory>
 
 namespace mupdf_wrapper
 {
@@ -16,12 +16,12 @@ namespace mupdf_wrapper
 
     class MUPDF_WRAPPER_API Pixmap
     {
-        fz_pixmap* m_mupdf_pixmap;
+        std::unique_ptr<fz_pixmap> m_mupdf_pixmap;
         std::shared_ptr<Context> m_context;
 
     public:
         Pixmap(std::shared_ptr<Context> context, std::shared_ptr<Document> document, std::shared_ptr<Matrix> matrix, int page_number);
-        Pixmap(std::shared_ptr<Context> context, std::shared_ptr<Document> document, std::shared_ptr<Matrix> matrix, std::shared_ptr<Page> page);
+        Pixmap(std::shared_ptr<Context> context, std::shared_ptr<Matrix> matrix, std::shared_ptr<Page> page);
         ~Pixmap();
         fz_pixmap* get() const;
         unsigned char* get_samples() const;
