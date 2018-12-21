@@ -15,7 +15,7 @@ namespace mupdf_wrapper
 
     class MUPDF_WRAPPER_API Document
     {
-        fz_document* m_mupdf_document;
+        std::unique_ptr<fz_document> m_mupdf_document;
         std::shared_ptr<Context> m_context;
 
     public:
