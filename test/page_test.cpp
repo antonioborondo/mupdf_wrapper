@@ -11,7 +11,7 @@ TEST_CASE("GIVEN one page empty document WHEN create new Page from existing page
     const auto context = std::make_shared<mupdf_wrapper::Context>();
     context->register_document_handlers();
 
-    const auto document = std::make_shared<mupdf_wrapper::Document>(context, "one_page_empty_document.pdf");
+    const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf");
     CHECK(document->get_total_pages() == 1);
 
     std::shared_ptr<mupdf_wrapper::Page> page;
@@ -26,7 +26,7 @@ TEST_CASE("GIVEN one page empty document WHEN create new Page from negative page
     const auto context = std::make_shared<mupdf_wrapper::Context>();
     context->register_document_handlers();
 
-    const auto document = std::make_shared<mupdf_wrapper::Document>(context, "one_page_empty_document.pdf");
+    const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf");
 
     std::shared_ptr<mupdf_wrapper::Page> page;
     REQUIRE_THROWS_AS(page = std::make_shared<mupdf_wrapper::Page>(context, document, -1), std::runtime_error);
@@ -37,7 +37,7 @@ TEST_CASE("GIVEN one page empty document WHEN create new Page from unexisting pa
     const auto context = std::make_shared<mupdf_wrapper::Context>();
     context->register_document_handlers();
 
-    const auto document = std::make_shared<mupdf_wrapper::Document>(context, "one_page_empty_document.pdf");
+    const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf");
     CHECK(document->get_total_pages() == 1);
 
     std::shared_ptr<mupdf_wrapper::Page> page;

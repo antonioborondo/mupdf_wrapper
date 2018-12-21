@@ -19,7 +19,7 @@ TEST_CASE("GIVEN one page empty document WHEN create new Document THEN Document 
     context->register_document_handlers();
 
     std::shared_ptr<mupdf_wrapper::Document> document;
-    REQUIRE_NOTHROW(document = std::make_shared<mupdf_wrapper::Document>(context, "one_page_empty_document.pdf"));
+    REQUIRE_NOTHROW(document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf"));
 
     const auto mupdf_document = document->get();
     REQUIRE(nullptr != mupdf_document);
@@ -37,7 +37,7 @@ TEST_CASE("GIVEN one page empty document WHEN get total pages THEN total pages e
     const auto context = std::make_shared<mupdf_wrapper::Context>();
     context->register_document_handlers();
 
-    const auto document = std::make_shared<mupdf_wrapper::Document>(context, "one_page_empty_document.pdf");
+    const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf");
     REQUIRE(document->get_total_pages() == 1);
 }
 
@@ -46,6 +46,6 @@ TEST_CASE("GIVEN five pages empty document WHEN get total pages THEN total pages
     const auto context = std::make_shared<mupdf_wrapper::Context>();
     context->register_document_handlers();
 
-    const auto document = std::make_shared<mupdf_wrapper::Document>(context, "five_pages_empty_document.pdf");
+    const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/five_pages_empty_document.pdf");
     REQUIRE(document->get_total_pages() == 5);
 }
