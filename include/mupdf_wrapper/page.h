@@ -3,9 +3,10 @@
 
 #include "mupdf_wrapper.h"
 
-#include <mupdf/fitz.h>
-
 #include <memory>
+
+struct fz_page_s;
+typedef struct fz_page_s fz_page;
 
 namespace mupdf_wrapper
 {

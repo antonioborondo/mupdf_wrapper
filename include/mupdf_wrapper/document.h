@@ -6,7 +6,8 @@
 #include <memory>
 #include <string>
 
-#include <mupdf/fitz.h>
+struct fz_document_s;
+typedef struct fz_document_s fz_document;
 
 namespace mupdf_wrapper
 {

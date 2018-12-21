@@ -3,9 +3,10 @@
 
 #include "mupdf_wrapper.h"
 
-#include <mupdf/fitz.h>
-
 #include <memory>
+
+struct fz_pixmap_s;
+typedef struct fz_pixmap_s fz_pixmap;
 
 namespace mupdf_wrapper
 {
@@ -25,6 +26,8 @@ namespace mupdf_wrapper
         ~Pixmap();
         fz_pixmap* get() const;
         unsigned char* get_samples() const;
+        unsigned char get_n() const;
+        ptrdiff_t get_stride() const;
         int get_width() const;
         int get_height() const;
     };

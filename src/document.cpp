@@ -2,6 +2,8 @@
 
 #include "context.h"
 
+#include <mupdf/fitz.h>
+
 #include <stdexcept>
 
 namespace mupdf_wrapper

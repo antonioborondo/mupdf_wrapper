@@ -21,8 +21,6 @@ SCENARIO("Set Matrix zoom", "[Matrix]")
     GIVEN("Matrix")
     {
         const mupdf_wrapper::Matrix matrix;
-        const auto mupdf_matrix = matrix.get();
-        REQUIRE(nullptr != mupdf_matrix);
 
         WHEN("Set zoom to 0%")
         {
@@ -30,12 +28,12 @@ SCENARIO("Set Matrix zoom", "[Matrix]")
 
             THEN("Zoom is 0%")
             {
-                CHECK(mupdf_matrix->a == Approx(0));
-                CHECK(mupdf_matrix->b == Approx(0));
-                CHECK(mupdf_matrix->c == Approx(0));
-                CHECK(mupdf_matrix->d == Approx(0));
-                CHECK(mupdf_matrix->e == Approx(0));
-                CHECK(mupdf_matrix->f == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::a) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::b) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::c) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::d) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::e) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::f) == Approx(0));
             }
         }
         WHEN("Set zoom to 50%")
@@ -44,12 +42,12 @@ SCENARIO("Set Matrix zoom", "[Matrix]")
 
             THEN("Zoom is 50%")
             {
-                CHECK(mupdf_matrix->a == Approx(0.5));
-                CHECK(mupdf_matrix->b == Approx(0));
-                CHECK(mupdf_matrix->c == Approx(0));
-                CHECK(mupdf_matrix->d == Approx(0.5));
-                CHECK(mupdf_matrix->e == Approx(0));
-                CHECK(mupdf_matrix->f == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::a) == Approx(0.5));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::b) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::c) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::d) == Approx(0.5));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::e) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::f) == Approx(0));
             }
         }
         WHEN("Set zoom to 100%")
@@ -58,12 +56,12 @@ SCENARIO("Set Matrix zoom", "[Matrix]")
 
             THEN("Zoom is 100%")
             {
-                CHECK(mupdf_matrix->a == Approx(1));
-                CHECK(mupdf_matrix->b == Approx(0));
-                CHECK(mupdf_matrix->c == Approx(0));
-                CHECK(mupdf_matrix->d == Approx(1));
-                CHECK(mupdf_matrix->e == Approx(0));
-                CHECK(mupdf_matrix->f == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::a) == Approx(1));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::b) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::c) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::d) == Approx(1));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::e) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::f) == Approx(0));
             }
         }
         WHEN("Set zoom to 150%")
@@ -72,12 +70,12 @@ SCENARIO("Set Matrix zoom", "[Matrix]")
 
             THEN("Zoom is 150%")
             {
-                CHECK(mupdf_matrix->a == Approx(1.5));
-                CHECK(mupdf_matrix->b == Approx(0));
-                CHECK(mupdf_matrix->c == Approx(0));
-                CHECK(mupdf_matrix->d == Approx(1.5));
-                CHECK(mupdf_matrix->e == Approx(0));
-                CHECK(mupdf_matrix->f == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::a) == Approx(1.5));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::b) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::c) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::d) == Approx(1.5));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::e) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::f) == Approx(0));
             }
         }
         WHEN("Set zoom to 200%")
@@ -86,12 +84,12 @@ SCENARIO("Set Matrix zoom", "[Matrix]")
 
             THEN("Zoom is 200%")
             {
-                CHECK(mupdf_matrix->a == Approx(2));
-                CHECK(mupdf_matrix->b == Approx(0));
-                CHECK(mupdf_matrix->c == Approx(0));
-                CHECK(mupdf_matrix->d == Approx(2));
-                CHECK(mupdf_matrix->e == Approx(0));
-                CHECK(mupdf_matrix->f == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::a) == Approx(2));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::b) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::c) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::d) == Approx(2));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::e) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::f) == Approx(0));
             }
         }
     }
@@ -102,8 +100,6 @@ SCENARIO("Set Matrix rotation", "[Matrix]")
     GIVEN("Matrix")
     {
         const mupdf_wrapper::Matrix matrix;
-        const auto mupdf_matrix = matrix.get();
-        REQUIRE(nullptr != mupdf_matrix);
 
         WHEN("Set rotation to 0º")
         {
@@ -111,12 +107,12 @@ SCENARIO("Set Matrix rotation", "[Matrix]")
 
             THEN("Rotation is 0º")
             {
-                CHECK(mupdf_matrix->a == Approx(1));
-                CHECK(mupdf_matrix->b == Approx(0));
-                CHECK(mupdf_matrix->c == Approx(0));
-                CHECK(mupdf_matrix->d == Approx(1));
-                CHECK(mupdf_matrix->e == Approx(0));
-                CHECK(mupdf_matrix->f == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::a) == Approx(1));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::b) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::c) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::d) == Approx(1));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::e) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::f) == Approx(0));
             }
         }
         WHEN("Set rotation to 90º")
@@ -125,12 +121,12 @@ SCENARIO("Set Matrix rotation", "[Matrix]")
 
             THEN("Rotation is 90º")
             {
-                CHECK(mupdf_matrix->a == Approx(0));
-                CHECK(mupdf_matrix->b == Approx(1));
-                CHECK(mupdf_matrix->c == Approx(-1));
-                CHECK(mupdf_matrix->d == Approx(0));
-                CHECK(mupdf_matrix->e == Approx(0));
-                CHECK(mupdf_matrix->f == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::a) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::b) == Approx(1));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::c) == Approx(-1));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::d) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::e) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::f) == Approx(0));
             }
         }
         WHEN("Set rotation to 180º")
@@ -139,12 +135,12 @@ SCENARIO("Set Matrix rotation", "[Matrix]")
 
             THEN("Rotation is 180º")
             {
-                CHECK(mupdf_matrix->a == Approx(-1));
-                CHECK(mupdf_matrix->b == Approx(0));
-                CHECK(mupdf_matrix->c == Approx(0));
-                CHECK(mupdf_matrix->d == Approx(-1));
-                CHECK(mupdf_matrix->e == Approx(0));
-                CHECK(mupdf_matrix->f == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::a) == Approx(-1));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::b) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::c) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::d) == Approx(-1));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::e) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::f) == Approx(0));
             }
         }
         WHEN("Set rotation to 270º")
@@ -153,12 +149,12 @@ SCENARIO("Set Matrix rotation", "[Matrix]")
 
             THEN("Rotation is 270º")
             {
-                CHECK(mupdf_matrix->a == Approx(0));
-                CHECK(mupdf_matrix->b == Approx(-1));
-                CHECK(mupdf_matrix->c == Approx(1));
-                CHECK(mupdf_matrix->d == Approx(0));
-                CHECK(mupdf_matrix->e == Approx(0));
-                CHECK(mupdf_matrix->f == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::a) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::b) == Approx(-1));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::c) == Approx(1));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::d) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::e) == Approx(0));
+                CHECK(matrix.get_element_value(mupdf_wrapper::Matrix::Element::f) == Approx(0));
             }
         }
     }

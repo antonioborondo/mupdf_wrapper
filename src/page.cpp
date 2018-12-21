@@ -3,6 +3,8 @@
 #include "context.h"
 #include "document.h"
 
+#include <mupdf/fitz.h>
+
 namespace mupdf_wrapper
 {
     Page::Page(std::shared_ptr<Context> context, std::shared_ptr<Document> document, int page_number)

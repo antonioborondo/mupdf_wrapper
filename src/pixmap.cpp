@@ -5,6 +5,8 @@
 #include "matrix.h"
 #include "page.h"
 
+#include <mupdf/fitz.h>
+
 #include <stdexcept>
 
 namespace mupdf_wrapper
@@ -44,6 +46,16 @@ namespace mupdf_wrapper
     unsigned char* Pixmap::get_samples() const
     {
         return fz_pixmap_samples(m_context->get(), m_mupdf_pixmap.get());
+    }
+
+    unsigned char Pixmap::get_n() const
+    {
+        return m_mupdf_pixmap->n;
+    }
+
+    ptrdiff_t Pixmap::get_stride() const
+    {
+        return m_mupdf_pixmap->stride;
     }
 
     int Pixmap::get_width() const

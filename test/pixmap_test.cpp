@@ -1,10 +1,10 @@
-#include <catch2/catch.hpp>
-
 #include <mupdf_wrapper/context.h>
 #include <mupdf_wrapper/document.h>
 #include <mupdf_wrapper/matrix.h>
 #include <mupdf_wrapper/page.h>
 #include <mupdf_wrapper/pixmap.h>
+
+#include <catch2/catch.hpp>
 
 #include <memory>
 
@@ -15,18 +15,17 @@ namespace
         const auto height = pixmap.get_height();
         const auto width = pixmap.get_width();
 
-        const auto mupdf_pixmap = pixmap.get();
-
         for(auto y = 0; y < height; y++)
         {
-            auto pixel_color = &mupdf_pixmap->samples[y * mupdf_pixmap->stride];
+            auto pixel_color = &pixmap.get_samples()[y * pixmap.get_stride()];
+
             for(auto x = 0; x < width; x++)
             {
                 if((255 != pixel_color[0]) || (255 != pixel_color[1]) || (255 != pixel_color[2]))
                 {
                     return false;
                 }
-                pixel_color += mupdf_pixmap->n;
+                pixel_color += pixmap.get_n();
             }
         }
 
