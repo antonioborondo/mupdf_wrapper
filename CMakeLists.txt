@@ -58,12 +58,8 @@ add_executable(mupdf_wrapper_test
     ${TEST_FILES}
 )
 
-target_include_directories(mupdf_wrapper_test
-    PRIVATE
-    ${CMAKE_SOURCE_DIR}/lib/catch2/single_include
-)
-
 target_link_libraries(mupdf_wrapper_test
     PRIVATE
     mupdf_wrapper
+    catch2
 )
