@@ -34,15 +34,15 @@ target_include_directories(mupdf_wrapper
     PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include/mupdf_wrapper
     PUBLIC
-    ${CMAKE_SOURCE_DIR}/lib/mupdf/include
+    ${CMAKE_SOURCE_DIR}/lib/MuPDF/include
 )
 
 target_link_libraries(mupdf_wrapper
     PUBLIC
-    debug ${CMAKE_SOURCE_DIR}/lib/mupdf/build/debug/libmupdf.a
-    debug ${CMAKE_SOURCE_DIR}/lib/mupdf/build/debug/libmupdfthird.a
-    optimized ${CMAKE_SOURCE_DIR}/lib/mupdf/build/release/libmupdf.a
-    optimized ${CMAKE_SOURCE_DIR}/lib/mupdf/build/release/libmupdfthird.a
+    debug ${CMAKE_SOURCE_DIR}/lib/MuPDF/build/debug/libmupdf.a
+    debug ${CMAKE_SOURCE_DIR}/lib/MuPDF/build/debug/libmupdfthird.a
+    optimized ${CMAKE_SOURCE_DIR}/lib/MuPDF/build/release/libmupdf.a
+    optimized ${CMAKE_SOURCE_DIR}/lib/MuPDF/build/release/libmupdfthird.a
 )
 
 set(TEST_FILES
