@@ -1,5 +1,19 @@
 project(mupdf_wrapper)
 
+include(ExternalProject)
+
+ExternalProject_Add(mupdf
+    GIT_REPOSITORY git://git.ghostscript.com/mupdf.git
+    GIT_TAG 1.13.0
+    GIT_SUBMODULES
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND make XCFLAGS=-fPIC HAVE_X11=no HAVE_GLUT=no libs
+    COMMAND make XCFLAGS=-fPIC HAVE_X11=no HAVE_GLUT=no libs build=debug
+    BUILD_IN_SOURCE 1
+    INSTALL_COMMAND ""
+    TEST_COMMAND ""
+)
+
 set(HEADER_FILES
     include/mupdf_wrapper/context.h
     include/mupdf_wrapper/document.h
@@ -30,20 +44,28 @@ set_property(TARGET mupdf_wrapper APPEND PROPERTY
     INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
+ExternalProject_Get_Property(mupdf SOURCE_DIR)
+
 target_include_directories(mupdf_wrapper
     PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include/mupdf_wrapper
     PUBLIC
-    ${CMAKE_SOURCE_DIR}/lib/MuPDF/include
+    ${SOURCE_DIR}/include
 )
+
+ExternalProject_Get_Property(mupdf BINARY_DIR)
 
 target_link_libraries(mupdf_wrapper
     PUBLIC
-    debug ${CMAKE_SOURCE_DIR}/lib/MuPDF/build/debug/libmupdf.a
-    debug ${CMAKE_SOURCE_DIR}/lib/MuPDF/build/debug/libmupdfthird.a
-    optimized ${CMAKE_SOURCE_DIR}/lib/MuPDF/build/release/libmupdf.a
-    optimized ${CMAKE_SOURCE_DIR}/lib/MuPDF/build/release/libmupdfthird.a
+    debug ${BINARY_DIR}/build/debug/libmupdf.a
+    debug ${BINARY_DIR}/build/debug/libmupdfthird.a
+    optimized ${BINARY_DIR}/build/release/libmupdf.a
+    optimized ${BINARY_DIR}/build/release/libmupdfthird.a
+    PRIVATE
+    stdc++
 )
+
+add_dependencies(mupdf_wrapper mupdf)
 
 set(TEST_FILES
     test/context_test.cpp
