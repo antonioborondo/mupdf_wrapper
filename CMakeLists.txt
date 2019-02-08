@@ -1,5 +1,10 @@
 project(mupdf_wrapper)
 
+set(MUPDF_BUILD_CONFIGURATION "")
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(MUPDF_BUILD_CONFIGURATION "build=debug")
+endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
+
 include(ExternalProject)
 
 ExternalProject_Add(mupdf
@@ -7,8 +12,7 @@ ExternalProject_Add(mupdf
     GIT_TAG 1.13.0
     GIT_SUBMODULES
     CONFIGURE_COMMAND ""
-    BUILD_COMMAND make XCFLAGS=-fPIC XCFLAGS+=-w HAVE_X11=no HAVE_GLUT=no libs
-    COMMAND make XCFLAGS=-fPIC XCFLAGS+=-w HAVE_X11=no HAVE_GLUT=no libs build=debug
+    BUILD_COMMAND make XCFLAGS=-fPIC XCFLAGS+=-w HAVE_X11=no HAVE_GLUT=no libs ${MUPDF_BUILD_CONFIGURATION}
     BUILD_IN_SOURCE 1
     INSTALL_COMMAND ""
     TEST_COMMAND ""
