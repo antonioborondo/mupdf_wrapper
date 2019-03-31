@@ -33,9 +33,9 @@ namespace
     }
 }
 
-SCENARIO("Create Pixmap from page number", "[Pixmap]")
+SCENARIO("Create Pixmap", "[Pixmap]")
 {
-    GIVEN("One page empty document")
+    GIVEN("Empty Page")
     {
         const auto context = std::make_shared<mupdf_wrapper::Context>();
         context->register_document_handlers();
@@ -43,58 +43,15 @@ SCENARIO("Create Pixmap from page number", "[Pixmap]")
         const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf");
         CHECK(document->get_total_pages() == 1);
 
-        const auto matrix = std::make_shared<mupdf_wrapper::Matrix>();
-        matrix->set_zoom(100);
-        matrix->set_rotation(0);
-
-        WHEN("Create Pixmap from negative page number")
-        {
-            THEN("An exception is thrown")
-            {
-                REQUIRE_THROWS_AS(mupdf_wrapper::Pixmap(context, document, matrix, -1), std::runtime_error);
-            }
-        }
-        WHEN("Create Pixmap from unexisting page number")
-        {
-            THEN("An exception is thrown")
-            {
-                REQUIRE_THROWS_AS(mupdf_wrapper::Pixmap(context, document, matrix, 1), std::runtime_error);
-            }
-        }
-        WHEN("Create Pixmap from existing page number")
-        {
-            THEN("No exception is thrown")
-            {
-                std::shared_ptr<mupdf_wrapper::Pixmap> pixmap;
-                REQUIRE_NOTHROW(pixmap = std::make_shared<mupdf_wrapper::Pixmap>(context, document, matrix, 0));
-
-                AND_THEN("Pixmap is created")
-                {
-                    const auto mupdf_pixmap = pixmap->get();
-                    REQUIRE(nullptr != mupdf_pixmap);
-                }
-            }
-        }     
-    }
-}
-
-SCENARIO("Create empty Pixmap from empty page", "[Pixmap]")
-{
-    GIVEN("One page empty document")
-    {
-        const auto context = std::make_shared<mupdf_wrapper::Context>();
-        context->register_document_handlers();
-
-        const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf");
-        CHECK(document->get_total_pages() == 1);
+        const auto page = std::make_shared<mupdf_wrapper::Page>(context, document, 0);
 
         const auto matrix = std::make_shared<mupdf_wrapper::Matrix>();
         matrix->set_zoom(100);
         matrix->set_rotation(0);
 
-        WHEN("Create Pixmap from empty page")
+        WHEN("Create Pixmap")
         {
-            const mupdf_wrapper::Pixmap pixmap(context, document, matrix, 0);
+            const mupdf_wrapper::Pixmap pixmap(context, matrix, page);
 
             THEN("Pixmap is empty")
             {
@@ -102,11 +59,7 @@ SCENARIO("Create empty Pixmap from empty page", "[Pixmap]")
             }
         }
     }
-}
-
-SCENARIO("Create not empty Pixmap from not empty page", "[Pixmap]")
-{
-    GIVEN("One page not empty document")
+    GIVEN("Not empty Page")
     {
         const auto context = std::make_shared<mupdf_wrapper::Context>();
         context->register_document_handlers();
@@ -114,13 +67,15 @@ SCENARIO("Create not empty Pixmap from not empty page", "[Pixmap]")
         const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_not_empty_document.pdf");
         CHECK(document->get_total_pages() == 1);
 
+        const auto page = std::make_shared<mupdf_wrapper::Page>(context, document, 0);
+
         const auto matrix = std::make_shared<mupdf_wrapper::Matrix>();
         matrix->set_zoom(100);
         matrix->set_rotation(0);
 
-        WHEN("Create Pixmap from empty page")
+        WHEN("Create Pixmap")
         {
-            const mupdf_wrapper::Pixmap pixmap(context, document, matrix, 0);
+            const mupdf_wrapper::Pixmap pixmap(context, matrix, page);
 
             THEN("Pixmap is not empty")
             {

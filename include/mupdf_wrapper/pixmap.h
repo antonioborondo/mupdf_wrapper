@@ -21,7 +21,6 @@ namespace mupdf_wrapper
         std::shared_ptr<Context> m_context;
 
     public:
-        Pixmap(std::shared_ptr<Context> context, std::shared_ptr<Document> document, std::shared_ptr<Matrix> matrix, int page_number);
         Pixmap(std::shared_ptr<Context> context, std::shared_ptr<Matrix> matrix, std::shared_ptr<Page> page);
         ~Pixmap();
         fz_pixmap* get() const;
