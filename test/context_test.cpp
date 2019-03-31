@@ -27,8 +27,6 @@ SCENARIO("Register document handlers", "[Context]")
     GIVEN("Context")
     {
         const mupdf_wrapper::Context context;
-        const auto mupdf_context = context.get();
-        REQUIRE(nullptr != mupdf_context);
 
         WHEN("Register document handlers")
         {
