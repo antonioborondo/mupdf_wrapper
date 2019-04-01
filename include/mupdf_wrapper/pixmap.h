@@ -4,6 +4,7 @@
 #include "mupdf_wrapper.h"
 
 #include <memory>
+#include <stddef.h>
 
 struct fz_pixmap_s;
 typedef struct fz_pixmap_s fz_pixmap;
