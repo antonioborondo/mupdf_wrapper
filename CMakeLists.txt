@@ -18,25 +18,29 @@ ExternalProject_Add(mupdf
     TEST_COMMAND ""
 )
 
-set(HEADER_FILES
-    include/mupdf_wrapper/context.h
-    include/mupdf_wrapper/document.h
-    include/mupdf_wrapper/matrix.h
-    include/mupdf_wrapper/mupdf_wrapper.h
-    include/mupdf_wrapper/page.h
-    include/mupdf_wrapper/pixmap.h
+set(PUBLIC_HEADER_FILES_FOLDER include)
+set(SOURCE_FILES_FOLDER src)
+set(TEST_FILES_FOLDER test)
+
+set(PUBLIC_HEADER_FILES
+    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/context.h
+    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/document.h
+    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/matrix.h
+    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/mupdf_wrapper.h
+    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/page.h
+    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/pixmap.h
 )
 
 set(SOURCE_FILES
-    src/context.cpp
-    src/document.cpp
-    src/matrix.cpp
-    src/page.cpp
-    src/pixmap.cpp
+    ${SOURCE_FILES_FOLDER}/context.cpp
+    ${SOURCE_FILES_FOLDER}/document.cpp
+    ${SOURCE_FILES_FOLDER}/matrix.cpp
+    ${SOURCE_FILES_FOLDER}/page.cpp
+    ${SOURCE_FILES_FOLDER}/pixmap.cpp
 )
 
 add_library(mupdf_wrapper SHARED
-    ${HEADER_FILES}
+    ${PUBLIC_HEADER_FILES}
     ${SOURCE_FILES}
 )
 
@@ -52,7 +56,7 @@ ExternalProject_Get_Property(mupdf SOURCE_DIR)
 
 target_include_directories(mupdf_wrapper
     PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/mupdf_wrapper
+    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper
     PUBLIC
     ${SOURCE_DIR}/include
 )
@@ -72,12 +76,12 @@ target_link_libraries(mupdf_wrapper
 add_dependencies(mupdf_wrapper mupdf)
 
 set(TEST_FILES
-    test/context_test.cpp
-    test/document_test.cpp
-    test/main.cpp
-    test/matrix_test.cpp
-    test/page_test.cpp
-    test/pixmap_test.cpp
+    ${TEST_FILES_FOLDER}/context_test.cpp
+    ${TEST_FILES_FOLDER}/document_test.cpp
+    ${TEST_FILES_FOLDER}/main.cpp
+    ${TEST_FILES_FOLDER}/matrix_test.cpp
+    ${TEST_FILES_FOLDER}/page_test.cpp
+    ${TEST_FILES_FOLDER}/pixmap_test.cpp
 )
 
 add_executable(mupdf_wrapper_test
