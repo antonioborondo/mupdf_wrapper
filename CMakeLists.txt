@@ -18,25 +18,25 @@ ExternalProject_Add(mupdf
     TEST_COMMAND ""
 )
 
-set(PUBLIC_HEADER_FILES_FOLDER include)
-set(SOURCE_FILES_FOLDER src)
-set(TEST_FILES_FOLDER test)
+set(PUBLIC_HEADER_FILES_DIRECTORY include)
+set(SOURCE_FILES_DIRECTORY src)
+set(TEST_FILES_DIRECTORY test)
 
 set(PUBLIC_HEADER_FILES
-    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/context.h
-    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/document.h
-    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/matrix.h
-    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/mupdf_wrapper.h
-    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/page.h
-    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper/pixmap.h
+    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/context.h
+    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/document.h
+    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/matrix.h
+    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/mupdf_wrapper.h
+    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/page.h
+    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/pixmap.h
 )
 
 set(SOURCE_FILES
-    ${SOURCE_FILES_FOLDER}/context.cpp
-    ${SOURCE_FILES_FOLDER}/document.cpp
-    ${SOURCE_FILES_FOLDER}/matrix.cpp
-    ${SOURCE_FILES_FOLDER}/page.cpp
-    ${SOURCE_FILES_FOLDER}/pixmap.cpp
+    ${SOURCE_FILES_DIRECTORY}/context.cpp
+    ${SOURCE_FILES_DIRECTORY}/document.cpp
+    ${SOURCE_FILES_DIRECTORY}/matrix.cpp
+    ${SOURCE_FILES_DIRECTORY}/page.cpp
+    ${SOURCE_FILES_DIRECTORY}/pixmap.cpp
 )
 
 add_library(mupdf_wrapper SHARED
@@ -56,7 +56,7 @@ ExternalProject_Get_Property(mupdf SOURCE_DIR)
 
 target_include_directories(mupdf_wrapper
     PRIVATE
-    ${PUBLIC_HEADER_FILES_FOLDER}/mupdf_wrapper
+    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper
     PUBLIC
     ${SOURCE_DIR}/include
 )
@@ -76,12 +76,12 @@ target_link_libraries(mupdf_wrapper
 add_dependencies(mupdf_wrapper mupdf)
 
 set(TEST_FILES
-    ${TEST_FILES_FOLDER}/context_test.cpp
-    ${TEST_FILES_FOLDER}/document_test.cpp
-    ${TEST_FILES_FOLDER}/main.cpp
-    ${TEST_FILES_FOLDER}/matrix_test.cpp
-    ${TEST_FILES_FOLDER}/page_test.cpp
-    ${TEST_FILES_FOLDER}/pixmap_test.cpp
+    ${TEST_FILES_DIRECTORY}/context_test.cpp
+    ${TEST_FILES_DIRECTORY}/document_test.cpp
+    ${TEST_FILES_DIRECTORY}/main.cpp
+    ${TEST_FILES_DIRECTORY}/matrix_test.cpp
+    ${TEST_FILES_DIRECTORY}/page_test.cpp
+    ${TEST_FILES_DIRECTORY}/pixmap_test.cpp
 )
 
 add_executable(mupdf_wrapper_test
