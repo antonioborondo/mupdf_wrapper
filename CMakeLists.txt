@@ -48,10 +48,6 @@ add_definitions(
     -DMUPDF_WRAPPER
 )
 
-set_property(TARGET mupdf_wrapper APPEND PROPERTY
-    INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
-
 ExternalProject_Get_Property(mupdf SOURCE_DIR)
 
 target_include_directories(mupdf_wrapper
@@ -59,6 +55,8 @@ target_include_directories(mupdf_wrapper
     ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper
     PUBLIC
     ${SOURCE_DIR}/include
+    INTERFACE
+    ${PUBLIC_HEADER_FILES_DIRECTORY}
 )
 
 ExternalProject_Get_Property(mupdf BINARY_DIR)
