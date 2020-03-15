@@ -3,8 +3,8 @@
 
 #include "mupdf_wrapper.h"
 
+#include <filesystem>
 #include <memory>
-#include <string>
 
 struct fz_document_s;
 typedef struct fz_document_s fz_document;
@@ -19,7 +19,7 @@ namespace mupdf_wrapper
         std::shared_ptr<Context> m_context;
 
     public:
-        Document(std::shared_ptr<Context> context, const std::string& filename);
+        Document(std::shared_ptr<Context> context, const std::filesystem::path& filename);
         ~Document();
         fz_document* get() const;
         int get_total_pages() const;

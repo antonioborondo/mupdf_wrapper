@@ -6,7 +6,10 @@
 
 #include <catch2/catch.hpp>
 
+#include <filesystem>
 #include <memory>
+
+extern std::filesystem::path test_files_directory;
 
 namespace
 {
@@ -40,7 +43,7 @@ SCENARIO("Create Pixmap", "[Pixmap]")
         const auto context = std::make_shared<mupdf_wrapper::Context>();
         context->register_document_handlers();
 
-        const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf");
+        const auto document = std::make_shared<mupdf_wrapper::Document>(context, test_files_directory / "one_page_empty_document.pdf");
 
         const auto page = std::make_shared<mupdf_wrapper::Page>(context, document, 0);
 
@@ -63,7 +66,7 @@ SCENARIO("Create Pixmap", "[Pixmap]")
         const auto context = std::make_shared<mupdf_wrapper::Context>();
         context->register_document_handlers();
 
-        const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_not_empty_document.pdf");
+        const auto document = std::make_shared<mupdf_wrapper::Document>(context, test_files_directory / "one_page_not_empty_document.pdf");
 
         const auto page = std::make_shared<mupdf_wrapper::Page>(context, document, 0);
 

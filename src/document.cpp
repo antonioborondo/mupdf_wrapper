@@ -8,11 +8,11 @@
 
 namespace mupdf_wrapper
 {
-    Document::Document(std::shared_ptr<Context> context, const std::string& filename)
+    Document::Document(std::shared_ptr<Context> context, const std::filesystem::path& filename)
         : m_context(context)
     {
         fz_try(m_context->get())
-            m_mupdf_document = std::unique_ptr<fz_document>(fz_open_document(m_context->get(), filename.c_str()));
+            m_mupdf_document = std::unique_ptr<fz_document>(fz_open_document(m_context->get(), filename.string().c_str()));
         fz_catch(m_context->get())
         {
             throw std::runtime_error("Cannot open document");

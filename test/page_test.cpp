@@ -4,7 +4,10 @@
 
 #include <catch2/catch.hpp>
 
+#include <filesystem>
 #include <memory>
+
+extern std::filesystem::path test_files_directory;
 
 SCENARIO("Create Page", "[Page]")
 {
@@ -13,7 +16,7 @@ SCENARIO("Create Page", "[Page]")
         const auto context = std::make_shared<mupdf_wrapper::Context>();
         context->register_document_handlers();
 
-        const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf");
+        const auto document = std::make_shared<mupdf_wrapper::Document>(context, test_files_directory / "one_page_empty_document.pdf");
         CHECK(document->get_total_pages() == 1);
 
         WHEN("Create Page from existing page number")

@@ -3,7 +3,10 @@
 
 #include <catch2/catch.hpp>
 
+#include <filesystem>
 #include <memory>
+
+extern std::filesystem::path test_files_directory;
 
 SCENARIO("Create Document", "[Document]")
 {
@@ -25,7 +28,7 @@ SCENARIO("Create Document", "[Document]")
             AND_WHEN("Create Document from existing document")
             {
                 std::unique_ptr<mupdf_wrapper::Document> document;
-                REQUIRE_NOTHROW(document = std::make_unique<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf"));
+                REQUIRE_NOTHROW(document = std::make_unique<mupdf_wrapper::Document>(context, test_files_directory / "one_page_empty_document.pdf"));
 
                 THEN("Document is created")
                 {
@@ -38,7 +41,7 @@ SCENARIO("Create Document", "[Document]")
         {
             THEN("An exception is thrown")
             {
-                REQUIRE_THROWS_AS(mupdf_wrapper::Document(context, "test_files/one_page_empty_document.pdf"), std::runtime_error);
+                REQUIRE_THROWS_AS(mupdf_wrapper::Document(context, test_files_directory / "one_page_empty_document.pdf"), std::runtime_error);
             }
         }
     }
@@ -53,7 +56,7 @@ SCENARIO("Get Document total pages", "[Document]")
 
         AND_GIVEN("One page document")
         {
-            const auto document = std::make_unique<mupdf_wrapper::Document>(context, "test_files/one_page_empty_document.pdf");
+            const auto document = std::make_unique<mupdf_wrapper::Document>(context, test_files_directory / "one_page_empty_document.pdf");
 
             WHEN("Get total pages")
             {
@@ -67,7 +70,7 @@ SCENARIO("Get Document total pages", "[Document]")
         }
         GIVEN("Five pages document")
         {
-            const auto document = std::make_shared<mupdf_wrapper::Document>(context, "test_files/five_pages_empty_document.pdf");
+            const auto document = std::make_shared<mupdf_wrapper::Document>(context, test_files_directory / "five_pages_empty_document.pdf");
 
             WHEN("Get total pages")
             {

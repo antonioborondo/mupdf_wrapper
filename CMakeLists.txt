@@ -67,8 +67,6 @@ target_link_libraries(mupdf_wrapper
     debug ${BINARY_DIR}/build/debug/libmupdfthird.a
     optimized ${BINARY_DIR}/build/release/libmupdf.a
     optimized ${BINARY_DIR}/build/release/libmupdfthird.a
-    PRIVATE
-    stdc++
 )
 
 add_dependencies(mupdf_wrapper mupdf)
@@ -90,4 +88,7 @@ target_link_libraries(mupdf_wrapper_test
     PRIVATE
     mupdf_wrapper
     catch2
+    stdc++fs
 )
+
+add_test(NAME mupdf_wrapper_test COMMAND mupdf_wrapper_test --tfd ${CMAKE_SOURCE_DIR}/test_files)
