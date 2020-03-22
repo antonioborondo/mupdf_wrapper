@@ -87,7 +87,7 @@ add_executable(mupdf_wrapper_test
 target_link_libraries(mupdf_wrapper_test
     PRIVATE
     mupdf_wrapper
-    catch2
+    CONAN_PKG::Catch2
     stdc++fs
 )
 
