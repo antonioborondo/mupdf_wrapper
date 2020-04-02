@@ -26,7 +26,7 @@ SCENARIO("Register document handlers", "[Context]")
 {
     GIVEN("Context")
     {
-        const mupdf_wrapper::Context context;
+        mupdf_wrapper::Context context;
 
         WHEN("Register document handlers")
         {

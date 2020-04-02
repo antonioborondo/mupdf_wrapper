@@ -13,11 +13,11 @@ SCENARIO("Create Page", "[Page]")
 {
     GIVEN("Document")
     {
-        const auto context = std::make_shared<mupdf_wrapper::Context>();
-        context->register_document_handlers();
+        mupdf_wrapper::Context context;
+        context.register_document_handlers();
 
-        const auto document = std::make_shared<mupdf_wrapper::Document>(context, test_files_directory / "one_page_empty_document.pdf");
-        CHECK(document->get_total_pages() == 1);
+        const mupdf_wrapper::Document document{context, test_files_directory / "one_page_empty_document.pdf"};
+        CHECK(document.get_total_pages() == 1);
 
         WHEN("Create Page from existing page number")
         {
@@ -34,14 +34,14 @@ SCENARIO("Create Page", "[Page]")
         {
             THEN("An exception is thrown")
             {
-                REQUIRE_THROWS_AS(mupdf_wrapper::Page(context, document, -1), std::runtime_error);
+                REQUIRE_THROWS_AS((mupdf_wrapper::Page{context, document, -1}), std::runtime_error);
             }
         }
         WHEN("Create Page from unexisting page number")
         {
             THEN("An exception is thrown")
             {
-                REQUIRE_THROWS_AS(mupdf_wrapper::Page(context, document, 1), std::runtime_error);
+                REQUIRE_THROWS_AS((mupdf_wrapper::Page{context, document, 1}), std::runtime_error);
             }
         }
     }

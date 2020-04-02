@@ -1,10 +1,6 @@
-#ifndef MUPDF_WRAPPER_PIXMAP_H
-#define MUPDF_WRAPPER_PIXMAP_H
+#pragma once
 
-#include "mupdf_wrapper.h"
-
-#include <memory>
-#include <stddef.h>
+#include <cstddef>
 
 struct fz_pixmap_s;
 typedef struct fz_pixmap_s fz_pixmap;
@@ -12,17 +8,16 @@ typedef struct fz_pixmap_s fz_pixmap;
 namespace mupdf_wrapper
 {
     class Context;
-    class Document;
     class Matrix;
     class Page;
 
-    class MUPDF_WRAPPER_API Pixmap
+    class Pixmap
     {
-        std::unique_ptr<fz_pixmap> m_mupdf_pixmap;
-        std::shared_ptr<Context> m_context;
+        fz_pixmap* m_mupdf_pixmap;
+        const Context& m_context;
 
     public:
-        Pixmap(std::shared_ptr<Context> context, std::shared_ptr<Matrix> matrix, std::shared_ptr<Page> page);
+        Pixmap(const Context& context, const Matrix& matrix, const Page& page);
         ~Pixmap();
         fz_pixmap* get() const;
         unsigned char* get_samples() const;
@@ -32,5 +27,3 @@ namespace mupdf_wrapper
         int get_height() const;
     };
 }
-
-#endif

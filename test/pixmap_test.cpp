@@ -40,16 +40,16 @@ SCENARIO("Create Pixmap", "[Pixmap]")
 {
     GIVEN("Empty Page")
     {
-        const auto context = std::make_shared<mupdf_wrapper::Context>();
-        context->register_document_handlers();
+        mupdf_wrapper::Context context;
+        context.register_document_handlers();
 
-        const auto document = std::make_shared<mupdf_wrapper::Document>(context, test_files_directory / "one_page_empty_document.pdf");
+        const mupdf_wrapper::Document document{context, test_files_directory / "one_page_empty_document.pdf"};
 
-        const auto page = std::make_shared<mupdf_wrapper::Page>(context, document, 0);
+        const mupdf_wrapper::Page page{context, document, 0};
 
-        const auto matrix = std::make_shared<mupdf_wrapper::Matrix>();
-        matrix->set_zoom(100);
-        matrix->set_rotation(0);
+        mupdf_wrapper::Matrix matrix;
+        matrix.set_zoom(100);
+        matrix.set_rotation(0);
 
         WHEN("Create Pixmap")
         {
@@ -63,16 +63,16 @@ SCENARIO("Create Pixmap", "[Pixmap]")
     }
     GIVEN("Not empty Page")
     {
-        const auto context = std::make_shared<mupdf_wrapper::Context>();
-        context->register_document_handlers();
+        mupdf_wrapper::Context context;
+        context.register_document_handlers();
 
-        const auto document = std::make_shared<mupdf_wrapper::Document>(context, test_files_directory / "one_page_not_empty_document.pdf");
+        const mupdf_wrapper::Document document{context, test_files_directory / "one_page_not_empty_document.pdf"};
 
-        const auto page = std::make_shared<mupdf_wrapper::Page>(context, document, 0);
+        const mupdf_wrapper::Page page{context, document, 0};
 
-        const auto matrix = std::make_shared<mupdf_wrapper::Matrix>();
-        matrix->set_zoom(100);
-        matrix->set_rotation(0);
+        mupdf_wrapper::Matrix matrix{};
+        matrix.set_zoom(100);
+        matrix.set_rotation(0);
 
         WHEN("Create Pixmap")
         {

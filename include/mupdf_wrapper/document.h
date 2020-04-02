@@ -1,10 +1,6 @@
-#ifndef MUPDF_WRAPPER_DOCUMENT_H
-#define MUPDF_WRAPPER_DOCUMENT_H
-
-#include "mupdf_wrapper.h"
+#pragma once
 
 #include <filesystem>
-#include <memory>
 
 struct fz_document_s;
 typedef struct fz_document_s fz_document;
@@ -13,17 +9,15 @@ namespace mupdf_wrapper
 {
     class Context;
 
-    class MUPDF_WRAPPER_API Document
+    class Document
     {
-        std::unique_ptr<fz_document> m_mupdf_document;
-        std::shared_ptr<Context> m_context;
+        fz_document* m_mupdf_document;
+        const Context& m_context;
 
     public:
-        Document(std::shared_ptr<Context> context, const std::filesystem::path& filename);
+        Document(const Context& context, const std::filesystem::path& filename);
         ~Document();
         fz_document* get() const;
         int get_total_pages() const;
     };
 }
-
-#endif

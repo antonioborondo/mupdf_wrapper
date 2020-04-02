@@ -12,17 +12,17 @@ SCENARIO("Create Document", "[Document]")
 {
     GIVEN("Context")
     {
-        const auto context = std::make_shared<mupdf_wrapper::Context>();
+        mupdf_wrapper::Context context;
 
         WHEN("Register document handlers")
         {
-            context->register_document_handlers();
+            context.register_document_handlers();
 
             AND_WHEN("Create Document from unexisting document")
             {
                 THEN("An exception is thrown")
                 {
-                    REQUIRE_THROWS_AS(mupdf_wrapper::Document(context, ""), std::runtime_error);
+                    REQUIRE_THROWS_AS((mupdf_wrapper::Document{context, ""}), std::runtime_error);
                 }
             }
             AND_WHEN("Create Document from existing document")
@@ -41,7 +41,7 @@ SCENARIO("Create Document", "[Document]")
         {
             THEN("An exception is thrown")
             {
-                REQUIRE_THROWS_AS(mupdf_wrapper::Document(context, test_files_directory / "one_page_empty_document.pdf"), std::runtime_error);
+                REQUIRE_THROWS_AS((mupdf_wrapper::Document{context, test_files_directory / "one_page_empty_document.pdf"}), std::runtime_error);
             }
         }
     }
@@ -51,16 +51,16 @@ SCENARIO("Get Document total pages", "[Document]")
 {
     GIVEN("Context")
     {
-        const auto context = std::make_shared<mupdf_wrapper::Context>();
-        context->register_document_handlers();
+        mupdf_wrapper::Context context;
+        context.register_document_handlers();
 
         AND_GIVEN("One page document")
         {
-            const auto document = std::make_unique<mupdf_wrapper::Document>(context, test_files_directory / "one_page_empty_document.pdf");
+            const mupdf_wrapper::Document document{context, test_files_directory / "one_page_empty_document.pdf"};
 
             WHEN("Get total pages")
             {
-                const auto total_pages = document->get_total_pages();
+                const auto total_pages = document.get_total_pages();
 
                 THEN("Total pages equal to one")
                 {
@@ -70,11 +70,11 @@ SCENARIO("Get Document total pages", "[Document]")
         }
         GIVEN("Five pages document")
         {
-            const auto document = std::make_shared<mupdf_wrapper::Document>(context, test_files_directory / "five_pages_empty_document.pdf");
+            const mupdf_wrapper::Document document{context, test_files_directory / "five_pages_empty_document.pdf"};
 
             WHEN("Get total pages")
             {
-                const auto total_pages = document->get_total_pages();
+                const auto total_pages = document.get_total_pages();
 
                 THEN("Total pages equal to five")
                 {

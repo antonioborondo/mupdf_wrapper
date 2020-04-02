@@ -26,7 +26,6 @@ set(PUBLIC_HEADER_FILES
     ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/context.h
     ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/document.h
     ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/matrix.h
-    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/mupdf_wrapper.h
     ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/page.h
     ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/pixmap.h
 )
@@ -39,13 +38,9 @@ set(SOURCE_FILES
     ${SOURCE_FILES_DIRECTORY}/pixmap.cpp
 )
 
-add_library(mupdf_wrapper SHARED
+add_library(mupdf_wrapper STATIC
     ${PUBLIC_HEADER_FILES}
     ${SOURCE_FILES}
-)
-
-add_definitions(
-    -DMUPDF_WRAPPER
 )
 
 ExternalProject_Get_Property(mupdf SOURCE_DIR)

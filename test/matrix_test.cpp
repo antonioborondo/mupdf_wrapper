@@ -20,7 +20,7 @@ SCENARIO("Set Matrix zoom", "[Matrix]")
 {
     GIVEN("Matrix")
     {
-        const mupdf_wrapper::Matrix matrix;
+        mupdf_wrapper::Matrix matrix;
 
         WHEN("Set zoom to 0%")
         {
@@ -99,7 +99,7 @@ SCENARIO("Set Matrix rotation", "[Matrix]")
 {
     GIVEN("Matrix")
     {
-        const mupdf_wrapper::Matrix matrix;
+        mupdf_wrapper::Matrix matrix;
 
         WHEN("Set rotation to 0º")
         {
