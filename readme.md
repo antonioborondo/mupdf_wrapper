@@ -34,7 +34,7 @@ C++ wrapper for MuPDF.
     pip install conan
     conan remote add catchorg https://api.bintray.com/conan/catchorg/Catch2
     ```
-1. Clone repository
+1. Clone repository.
 1. Configure, build and test project:
     ```
     mkdir build
