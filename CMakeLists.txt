@@ -4,22 +4,6 @@ project(mupdf_wrapper)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(CONAN_CMAKE ${CMAKE_BINARY_DIR}/conan.cmake)
-
-if(NOT EXISTS ${CONAN_CMAKE})
-    message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
-    file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/develop/conan.cmake" ${CONAN_CMAKE})
-endif()
-
-include(${CONAN_CMAKE})
-
-conan_cmake_run(
-    REQUIRES
-    Catch2/2.11.3@catchorg/stable
-    BASIC_SETUP CMAKE_TARGETS
-    BUILD missing
-)
-
 set(MUPDF_BUILD_CONFIGURATION "")
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(MUPDF_BUILD_CONFIGURATION "build=debug")
@@ -39,8 +23,6 @@ ExternalProject_Add(mupdf
 )
 
 set(PUBLIC_HEADER_FILES_DIRECTORY include)
-set(SOURCE_FILES_DIRECTORY src)
-set(TEST_FILES_DIRECTORY test)
 
 set(PUBLIC_HEADER_FILES
     ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/context.h
@@ -49,6 +31,8 @@ set(PUBLIC_HEADER_FILES
     ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/page.h
     ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/pixmap.h
 )
+
+set(SOURCE_FILES_DIRECTORY src)
 
 set(SOURCE_FILES
     ${SOURCE_FILES_DIRECTORY}/context.cpp
@@ -86,26 +70,50 @@ target_link_libraries(mupdf_wrapper
 
 add_dependencies(mupdf_wrapper mupdf)
 
-set(TEST_FILES
-    ${TEST_FILES_DIRECTORY}/context_test.cpp
-    ${TEST_FILES_DIRECTORY}/document_test.cpp
-    ${TEST_FILES_DIRECTORY}/main.cpp
-    ${TEST_FILES_DIRECTORY}/matrix_test.cpp
-    ${TEST_FILES_DIRECTORY}/page_test.cpp
-    ${TEST_FILES_DIRECTORY}/pixmap_test.cpp
-)
+option(MUPDF_WRAPPER_ENABLE_TEST "Enable test")
 
-add_executable(mupdf_wrapper_test
-    ${TEST_FILES}
-)
+if(MUPDF_WRAPPER_ENABLE_TEST)
 
-target_link_libraries(mupdf_wrapper_test
-    PRIVATE
-    mupdf_wrapper
-    CONAN_PKG::Catch2
-    stdc++fs
-)
+    set(CONAN_CMAKE ${CMAKE_BINARY_DIR}/conan.cmake)
 
-enable_testing()
+    if(NOT EXISTS ${CONAN_CMAKE})
+        message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+        file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/develop/conan.cmake" ${CONAN_CMAKE})
+    endif()
 
-add_test(NAME mupdf_wrapper_test COMMAND mupdf_wrapper_test --tfd ${CMAKE_SOURCE_DIR}/test_files)
+    include(${CONAN_CMAKE})
+
+    conan_cmake_run(
+        REQUIRES
+        Catch2/2.11.3@catchorg/stable
+        BASIC_SETUP CMAKE_TARGETS
+        BUILD missing
+    )
+
+    set(TEST_FILES_DIRECTORY test)
+
+    set(TEST_FILES
+        ${TEST_FILES_DIRECTORY}/context_test.cpp
+        ${TEST_FILES_DIRECTORY}/document_test.cpp
+        ${TEST_FILES_DIRECTORY}/main.cpp
+        ${TEST_FILES_DIRECTORY}/matrix_test.cpp
+        ${TEST_FILES_DIRECTORY}/page_test.cpp
+        ${TEST_FILES_DIRECTORY}/pixmap_test.cpp
+    )
+
+    add_executable(mupdf_wrapper_test
+        ${TEST_FILES}
+    )
+
+    target_link_libraries(mupdf_wrapper_test
+        PRIVATE
+        mupdf_wrapper
+        CONAN_PKG::Catch2
+        stdc++fs
+    )
+
+    enable_testing()
+
+    add_test(NAME mupdf_wrapper_test COMMAND mupdf_wrapper_test --tfd ${CMAKE_SOURCE_DIR}/test_files)
+
+endif()
