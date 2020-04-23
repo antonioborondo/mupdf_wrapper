@@ -24,6 +24,6 @@ env:
 script:
   - mkdir build
   - cd build
-  - cmake -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DMUPDF_WRAPPER_ENABLE_TEST=ON ../
+  - cmake -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DMUPDF_WRAPPER_ENABLE_TEST=ON ..
   - cmake --build .
   - ctest --verbose
