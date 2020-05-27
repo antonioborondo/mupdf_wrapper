@@ -24,22 +24,24 @@ C++ wrapper for MuPDF.
 ## How to build
 ### Windows (MinGW 64-bit)
 1. Install MSYS2 x86_64: https://www.msys2.org
-1. Run `mingw64.exe`
+1. Open "MSYS2 MinGW 64-bit".
 1. Install packages:
     ```
-    pacman -S git make mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-python-pip
+    pacman -S mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-python-pip
     ```
+1. Append "<MSYS2_INSTALLATION_DIRECTORY>\mingw64\bin" to the PATH.
+1. Open "Command Prompt".
 1. Install and configure Conan:
     ```
     pip install conan
     conan remote add catchorg https://api.bintray.com/conan/catchorg/Catch2
     ```
-1. Clone repository.
-1. Configure, build and test project:
+1. Clone the repository.
+1. Configure, build and test:
     ```
     mkdir build
     cd build
-    cmake -G "MinGW Makefiles" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_BUILD_TYPE=Release -DMUPDF_WRAPPER_ENABLE_TEST=ON ..
+    cmake -G "MinGW Makefiles" -DCMAKE_MAKE_PROGRAM=mingw32-make -DCMAKE_BUILD_TYPE=Release -DMUPDF_WRAPPER_ENABLE_TEST=ON ..
     cmake --build .
     ctest --verbose
     ```
