@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(MUPDF_BUILD_CONFIGURATION "")
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(MUPDF_BUILD_CONFIGURATION "build=debug")
-endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
+endif()
 
 include(ExternalProject)
 
