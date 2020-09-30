@@ -75,7 +75,7 @@ if(MUPDF_WRAPPER_ENABLE_TEST)
 
     conan_cmake_run(
         REQUIRES
-        Catch2/2.11.3@catchorg/stable
+        Catch2/2.13.1@catchorg/stable
         BASIC_SETUP CMAKE_TARGETS
         BUILD missing
     )
