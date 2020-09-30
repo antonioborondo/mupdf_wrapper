@@ -1,7 +1,7 @@
-#include "page.h"
+#include "mupdf_wrapper/page.h"
 
-#include "context.h"
-#include "document.h"
+#include "mupdf_wrapper/context.h"
+#include "mupdf_wrapper/document.h"
 
 #include <mupdf/fitz.h>
 

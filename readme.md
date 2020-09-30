@@ -12,14 +12,14 @@ C++ wrapper for MuPDF.
 - CI implemented with Travis CI.
 
 ## Libraries
-- Catch2: https://www.github.com/catchorg/Catch2
+- Catch2: https://github.com/catchorg/Catch2
 - Clara: https://github.com/catchorg/Clara
-- MuPDF: https://www.mupdf.com
+- MuPDF: https://mupdf.com
 
 ## Tools
-- CMake: https://www.cmake.org
-- Conan: https://www.conan.io
-- Travis CI: https://www.travis-ci.com
+- CMake: https://cmake.org
+- Conan: https://conan.io
+- Travis CI: https://travis-ci.com
 
 ## How to build
 ### Windows (MinGW 64-bit)
@@ -29,10 +29,9 @@ C++ wrapper for MuPDF.
     ```
     pacman -S git make mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-python-pip
     ```
-1. Install and configure Conan:
+1. Install Conan:
     ```
     pip install conan
-    conan remote add catchorg https://api.bintray.com/conan/catchorg/Catch2
     ```
 1. Clone the repository:
     ```

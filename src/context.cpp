@@ -1,4 +1,4 @@
-#include "context.h"
+#include "mupdf_wrapper/context.h"
 
 #include <mupdf/fitz.h>
 
