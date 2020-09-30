@@ -22,40 +22,25 @@ ExternalProject_Add(mupdf
     TEST_COMMAND ""
 )
 
-set(PUBLIC_HEADER_FILES_DIRECTORY include)
-
-set(PUBLIC_HEADER_FILES
-    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/context.h
-    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/document.h
-    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/matrix.h
-    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/page.h
-    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper/pixmap.h
-)
-
-set(SOURCE_FILES_DIRECTORY src)
-
-set(SOURCE_FILES
-    ${SOURCE_FILES_DIRECTORY}/context.cpp
-    ${SOURCE_FILES_DIRECTORY}/document.cpp
-    ${SOURCE_FILES_DIRECTORY}/matrix.cpp
-    ${SOURCE_FILES_DIRECTORY}/page.cpp
-    ${SOURCE_FILES_DIRECTORY}/pixmap.cpp
-)
-
 add_library(mupdf_wrapper STATIC
-    ${PUBLIC_HEADER_FILES}
-    ${SOURCE_FILES}
+    include/mupdf_wrapper/context.h
+    include/mupdf_wrapper/document.h
+    include/mupdf_wrapper/matrix.h
+    include/mupdf_wrapper/page.h
+    include/mupdf_wrapper/pixmap.h
+    src/context.cpp
+    src/document.cpp
+    src/matrix.cpp
+    src/page.cpp
+    src/pixmap.cpp
 )
 
 ExternalProject_Get_Property(mupdf SOURCE_DIR)
 
 target_include_directories(mupdf_wrapper
-    PRIVATE
-    ${PUBLIC_HEADER_FILES_DIRECTORY}/mupdf_wrapper
     PUBLIC
+    include
     ${SOURCE_DIR}/include
-    INTERFACE
-    ${PUBLIC_HEADER_FILES_DIRECTORY}
 )
 
 ExternalProject_Get_Property(mupdf BINARY_DIR)
@@ -95,19 +80,13 @@ if(MUPDF_WRAPPER_ENABLE_TEST)
         BUILD missing
     )
 
-    set(TEST_FILES_DIRECTORY test)
-
-    set(TEST_FILES
-        ${TEST_FILES_DIRECTORY}/context_test.cpp
-        ${TEST_FILES_DIRECTORY}/document_test.cpp
-        ${TEST_FILES_DIRECTORY}/main.cpp
-        ${TEST_FILES_DIRECTORY}/matrix_test.cpp
-        ${TEST_FILES_DIRECTORY}/page_test.cpp
-        ${TEST_FILES_DIRECTORY}/pixmap_test.cpp
-    )
-
     add_executable(mupdf_wrapper_test
-        ${TEST_FILES}
+        test/context_test.cpp
+        test/document_test.cpp
+        test/main.cpp
+        test/matrix_test.cpp
+        test/page_test.cpp
+        test/pixmap_test.cpp
     )
 
     target_link_libraries(mupdf_wrapper_test

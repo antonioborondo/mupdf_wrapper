@@ -1,8 +1,8 @@
-#include "pixmap.h"
+#include "mupdf_wrapper/pixmap.h"
 
-#include "context.h"
-#include "matrix.h"
-#include "page.h"
+#include "mupdf_wrapper/context.h"
+#include "mupdf_wrapper/matrix.h"
+#include "mupdf_wrapper/page.h"
 
 #include <mupdf/fitz.h>
 

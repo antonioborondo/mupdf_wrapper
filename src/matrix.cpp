@@ -1,4 +1,4 @@
-#include "matrix.h"
+#include "mupdf_wrapper/matrix.h"
 
 #include <mupdf/fitz.h>
 
