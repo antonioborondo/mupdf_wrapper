@@ -78,10 +78,15 @@ if(MUPDF_WRAPPER_ENABLE_TEST)
 
     if(NOT EXISTS ${CONAN_CMAKE})
         message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
-        file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/develop/conan.cmake" ${CONAN_CMAKE})
+        file(DOWNLOAD "https://github.com/conan-io/cmake-conan/raw/v0.15/conan.cmake" ${CONAN_CMAKE})
     endif()
 
     include(${CONAN_CMAKE})
+
+    conan_add_remote(
+        NAME catchorg
+        URL https://api.bintray.com/conan/catchorg/Catch2
+    )
 
     conan_cmake_run(
         REQUIRES
