@@ -12,14 +12,14 @@ C++ wrapper for MuPDF.
 - CI implemented with Travis CI.
 
 ## Libraries
-- Catch2: https://www.github.com/catchorg/Catch2
+- Catch2: https://github.com/catchorg/Catch2
 - Clara: https://github.com/catchorg/Clara
-- MuPDF: https://www.mupdf.com
+- MuPDF: https://mupdf.com
 
 ## Tools
-- CMake: https://www.cmake.org
-- Conan: https://www.conan.io
-- Travis CI: https://www.travis-ci.com
+- CMake: https://cmake.org
+- Conan: https://conan.io
+- Travis CI: https://travis-ci.com
 
 ## How to build
 ### Windows (MinGW 64-bit)
