@@ -1,11 +1,6 @@
 language: cpp
 
-dist: bionic
-
-addons:
-  apt:
-    packages:
-      - g++-8
+dist: focal
 
 install:
   - pip install conan
@@ -13,9 +8,6 @@ install:
   - conan profile update settings.compiler.libcxx=libstdc++11 default
 
 env:
-  global:
-    - CC=gcc-8
-    - CXX=g++-8
   jobs:
     - BUILD_CONFIGURATION=Release
     - BUILD_CONFIGURATION=Debug
