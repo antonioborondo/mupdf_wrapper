@@ -29,10 +29,9 @@ C++ wrapper for MuPDF.
     ```
     pacman -S git make mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-python-pip
     ```
-1. Install and configure Conan:
+1. Install Conan:
     ```
     pip install conan
-    conan remote add catchorg https://api.bintray.com/conan/catchorg/Catch2
     ```
 1. Clone the repository:
     ```
