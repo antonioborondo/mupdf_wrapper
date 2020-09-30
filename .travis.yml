@@ -2,20 +2,12 @@ language: cpp
 
 dist: focal
 
-addons:
-  apt:
-    packages:
-      - g++-8
-
 install:
   - pip install conan
   - conan profile new default --detect
   - conan profile update settings.compiler.libcxx=libstdc++11 default
 
 env:
-  global:
-    - CC=gcc-8
-    - CXX=g++-8
   jobs:
     - BUILD_CONFIGURATION=Release
     - BUILD_CONFIGURATION=Debug
