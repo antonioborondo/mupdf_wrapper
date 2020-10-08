@@ -44,3 +44,25 @@ C++ wrapper for MuPDF.
     cmake --build .
     ctest --verbose
     ```
+
+### Linux (Ubuntu 20.04 LTS)
+1. Install packages:
+    ```
+    sudo apt install build-essential cmake python3-pip
+    ```
+1. Install Conan:
+    ```
+    pip3 install conan
+    source ~/.profile
+    ```
+1. Clone the repository:
+    ```
+    git clone git@github.com:antonioborondo/mupdf_wrapper.git && cd mupdf_wrapper
+    ```
+1. Configure, build and test:
+    ```
+    mkdir build && cd build
+    cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DMUPDF_WRAPPER_ENABLE_TEST=ON ..
+    cmake --build .
+    ctest --verbose
+    ```
