@@ -61,7 +61,7 @@ C++ wrapper for MuPDF.
 1. Configure, build and test:
     ```
     mkdir build && cd build
-    cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DMUPDF_WRAPPER_ENABLE_TEST=ON ..
+    cmake -DCMAKE_BUILD_TYPE=Release -DMUPDF_WRAPPER_ENABLE_TEST=ON ..
     cmake --build .
     ctest --verbose
     ```
