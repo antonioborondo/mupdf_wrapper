@@ -52,8 +52,7 @@ C++ wrapper for MuPDF.
     ```
 1. Install Conan:
     ```
-    pip3 install conan
-    source ~/.profile
+    sudo pip3 install conan
     ```
 1. Clone the repository:
     ```
