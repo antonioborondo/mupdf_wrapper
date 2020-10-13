@@ -68,7 +68,7 @@ SCENARIO("Get Document total pages", "[Document]")
                 }
             }
         }
-        GIVEN("Five pages document")
+        AND_GIVEN("Five pages document")
         {
             const mupdf_wrapper::Document document{context, test_files_directory / "five_pages_empty_document.pdf"};
 
