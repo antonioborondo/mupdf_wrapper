@@ -23,7 +23,7 @@ C++ wrapper for MuPDF.
 
 ## How to build
 ### Windows (MinGW 64-bit)
-1. Install MSYS2 x86_64: https://www.msys2.org
+1. Install MSYS2 x86_64: https://msys2.org
 1. Open "MSYS2 MinGW 64-bit".
 1. Install packages:
     ```
