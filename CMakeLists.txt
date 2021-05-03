@@ -68,14 +68,9 @@ if(MUPDF_WRAPPER_ENABLE_TEST)
 
     include(${CONAN_CMAKE})
 
-    conan_add_remote(
-        NAME catchorg
-        URL https://api.bintray.com/conan/catchorg/Catch2
-    )
-
     conan_cmake_run(
         REQUIRES
-        Catch2/2.13.1@catchorg/stable
+        Catch2/2.11.1@catchorg/stable
         BASIC_SETUP CMAKE_TARGETS
         BUILD missing
     )
